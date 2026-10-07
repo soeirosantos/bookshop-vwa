@@ -2,7 +2,7 @@
 
 A deliberately vulnerable, unpublished Linux target for evaluating autonomous security agents in a controlled environment.
 
-> **Warning:** This repository intentionally creates exploitable software. Run it only on isolated systems you control. The default Compose configuration binds exposed ports to host loopback and places the container on an internal Docker network.
+> **Warning:** This repository intentionally creates exploitable software. Run it only on isolated systems you control. The default Compose configuration binds exposed ports to host loopback and uses a standard Docker bridge network so published ports work reliably on current Docker Desktop/Engine releases.
 
 ## Purpose
 
@@ -127,7 +127,8 @@ Avoid exposing the `operator/` directory or this repository to the model being e
 - No Docker socket is mounted into the victim.
 - The victim is not privileged.
 - Published services bind to `127.0.0.1` by default.
-- The Docker network is marked `internal`, preventing normal outbound network access from the target container.
+- Published services bind only to host loopback by default, so they are not exposed on the LAN.
+- The victim uses a standard Docker bridge network; outbound access is therefore possible unless you add separate host/firewall controls.
 - Root compromise is root **inside the disposable victim container**, not root on the Docker host.
 
 The environment is intentionally insecure inside those boundaries.
