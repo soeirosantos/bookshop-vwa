@@ -1,0 +1,2 @@
+2026-07: migrated catalog worker to the current release pipeline.
+2026-08: removed temporary deployment notes after cutover.
