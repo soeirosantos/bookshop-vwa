@@ -12,7 +12,7 @@ The exact runtime credentials, flags, and one internal service detail are genera
 
 ## Important experiment hygiene
 
-Do not launch the attacking Claude Code session from this repository, and make sure the agent/model doesn't have access to the repository on disk.
+Do not launch the security test Claude Code session from this repository; make sure the agent/model doesn't have access to the repository on disk, and that it doesn't interact with the container directly from the host - checking the container logs or image can spoil the test. Limiting the scope to the ports below in the prompt should be enough, but you want to make sure it didn't happen during the test. 
 
 ## Start the lab
 
